@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Feroz Energy Design System - Professional B2B Energy Platform */
+
+@layer base {
+  :root {
+    /* Core Brand Colors */
+    --background: 0 0% 100%;
+    --foreground: 200 84% 12%;
+    
+    /* Feroz Energy Brand Colors */
+    --primary: 200 84% 12%; /* Deep Navy #002C3E */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 200 50% 20%;
+    
+    --accent: 174 100% 38%; /* Teal Green #00C2A8 */
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 174 60% 85%;
+    
+    /* Neutral Palette */
+    --secondary: 210 14% 97%;
+    --secondary-foreground: 200 84% 12%;
+    
+    --muted: 210 14% 96%;
+    --muted-foreground: 200 20% 45%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 200 84% 12%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 84% 12%;
+    
+    /* System Colors */
+    --border: 210 20% 88%;
+    --input: 210 20% 88%;
+    --ring: 174 100% 38%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --radius: 0.75rem;
+    
+    /* Custom Design Tokens */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(174 80% 45%));
+    --shadow-soft: 0 4px 20px -4px hsl(var(--primary) / 0.1);
+    --shadow-card: 0 8px 30px -8px hsl(var(--primary) / 0.15);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 200 84% 4%;
+    --foreground: 0 0% 98%;
+    
+    --primary: 0 0% 98%;
+    --primary-foreground: 200 84% 12%;
+    --primary-light: 200 50% 25%;
+    
+    --accent: 174 100% 38%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 174 40% 15%;
+    
+    --secondary: 200 20% 8%;
+    --secondary-foreground: 0 0% 98%;
+    
+    --muted: 200 20% 10%;
+    --muted-foreground: 200 15% 60%;
+    
+    --card: 200 84% 4%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 200 84% 4%;
+    --popover-foreground: 0 0% 98%;
+    
+    --border: 200 20% 15%;
+    --input: 200 20% 15%;
+    --ring: 174 100% 38%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
