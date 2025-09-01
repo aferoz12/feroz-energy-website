@@ -15,9 +15,71 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@lovable_dev" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2HR34QN8M"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-H2HR34QN8M', {
+        page_title: 'Feroz Energy - Utility Rate Optimization',
+        page_location: window.location.href,
+        send_page_view: true
+      });
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GT-PLTMP954');</script>
+
+    <!-- Enhanced Conversion Tracking -->
+    <script>
+      // Track form submissions
+      window.trackFormSubmission = function(formData) {
+        gtag('event', 'form_submit', {
+          event_category: 'engagement',
+          event_label: 'utility_review_request',
+          value: 1,
+          custom_parameters: {
+            form_type: 'utility_review',
+            business_type: 'multi_location'
+          }
+        });
+      };
+
+      // Track file uploads
+      window.trackFileUpload = function(fileCount, totalSize) {
+        gtag('event', 'file_upload', {
+          event_category: 'engagement',
+          event_label: 'utility_bills_uploaded',
+          value: fileCount,
+          custom_parameters: {
+            file_count: fileCount,
+            total_size_mb: (totalSize / 1024 / 1024).toFixed(2)
+          }
+        });
+      };
+
+      // Track page views
+      window.trackPageView = function(pageTitle, pagePath) {
+        gtag('event', 'page_view', {
+          page_title: pageTitle,
+          page_location: pagePath,
+          send_page_view: true
+        });
+      };
+    </script>
   </head>
 
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GT-PLTMP954"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

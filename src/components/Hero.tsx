@@ -109,59 +109,59 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center">
+    <div className="relative min-h-[60vh] flex items-center">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-secondary via-background to-accent-light opacity-50" />
       
-      <div className="relative w-full px-4 sm:px-6 lg:px-8 pt-4 pb-8">
-        <div className="grid lg:grid-cols-2 gap-4 items-center">
+      <div className="relative w-full px-8 sm:px-10 lg:px-16 xl:px-20 pt-12 pb-16">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-7xl mx-auto">
           {/* Left Column - Content */}
-          <div className="space-y-20">
-            <Badge className="bg-accent text-white text-xl px-6 py-3">
+          <div className="space-y-8">
+            <Badge className="bg-accent text-white text-base px-4 py-2">
               10+ Years Industry Experience
             </Badge>
             
-            <div className="space-y-16">
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-primary leading-tight">
-                We only make money<br />
-                if we{" "}
-                <span className="bg-gradient-accent bg-clip-text text-transparent">
-                  save you money
-                </span>
+            <div className="space-y-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight">
+                You're probably overpaying for energy.<br />
+                We find hidden savings and put them back in your pocket.
               </h1>
               
-              <p className="text-2xl text-muted-foreground leading-relaxed">
-                Upload a utility bill to request a no-obligation review. Our success depends on your savings — no risk, no hidden fees.
-              </p>
+              <div className="space-y-3">
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Upload a utility bill to request a no-obligation review. Our success depends on your savings — no risk, no hidden fees. We only make money if we save you money.
+                </p>
+              </div>
             </div>
 
-            <div className="flex flex-col gap-8">
-              <Button asChild size="lg" className="bg-gradient-accent hover:opacity-90 h-20 text-xl font-semibold">
+            {/* Button container - will align with form submit button */}
+            <div className="pt-4">
+              <Button asChild size="lg" className="bg-gradient-accent hover:opacity-90 h-14 text-base font-semibold">
                 <Link to="/faq">View FAQ</Link>
               </Button>
             </div>
           </div>
 
           {/* Right Column - Form */}
-          <Card className="shadow-card h-full">
-            <CardContent className="p-12 h-full flex flex-col">
-              <div className="space-y-10 mb-8">
+          <Card className="shadow-card">
+            <CardContent className="p-8 lg:p-10">
+              <div className="space-y-6">
                 <div>
-                  <h3 className="text-3xl font-semibold text-primary mb-4">
+                  <h3 className="text-xl font-semibold text-primary mb-3">
                     Get Your Free Rate Review
                   </h3>
-                  <p className="text-lg text-muted-foreground">
+                  <p className="text-sm text-muted-foreground">
                     No savings, no fee. Let us find the overcharges in your utility bills.
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-8 flex-1 flex flex-col">
+                <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
                     <Input
                       placeholder="Full Name"
                       value={formData.name}
                       onChange={(e) => handleInputChange("name", e.target.value)}
-                      className="h-16 text-lg"
+                      className="h-12 text-sm"
                       required
                     />
                   </div>
@@ -172,7 +172,7 @@ const Hero = () => {
                       placeholder="Business Email"
                       value={formData.email}
                       onChange={(e) => handleInputChange("email", e.target.value)}
-                      className="h-16 text-lg"
+                      className="h-12 text-sm"
                       required
                     />
                   </div>
@@ -183,13 +183,13 @@ const Hero = () => {
                       placeholder="Phone Number"
                       value={formData.phone}
                       onChange={(e) => handleInputChange("phone", e.target.value)}
-                      className="h-16 text-lg"
+                      className="h-12 text-sm"
                       required
                     />
                   </div>
 
                   <div 
-                    className={`border-2 border-dashed rounded-lg p-12 text-center transition-colors cursor-pointer flex-1 flex items-center justify-center ${
+                    className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors cursor-pointer ${
                       isDragOver 
                         ? 'border-accent bg-accent/10' 
                         : 'border-border hover:border-accent'
@@ -207,11 +207,11 @@ const Hero = () => {
                       onChange={(e) => handleFileSelect(e.target.files)}
                       className="hidden"
                     />
-                    <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground">
+                    <div className="space-y-2">
+                      <p className="text-base text-muted-foreground">
                         Drag & drop utility bills here
                       </p>
-                      <p className="text-base text-muted-foreground">
+                      <p className="text-xs text-muted-foreground">
                         Or click to select files (1-12 months recommended)
                       </p>
                     </div>
@@ -241,16 +241,17 @@ const Hero = () => {
                     </div>
                   )}
 
-                  <div className="mt-auto">
+                  {/* Submit button - aligned with View FAQ button */}
+                  <div className="pt-4">
                     <Button 
                       type="submit" 
                       disabled={isSubmitting}
-                      className="w-full h-20 bg-gradient-accent hover:opacity-90 text-xl font-semibold"
+                      className="w-full h-14 bg-gradient-accent hover:opacity-90 text-base font-semibold"
                     >
                       {isSubmitting ? "Submitting..." : "Submit Free Review Request"}
                     </Button>
                     
-                    <p className="text-sm text-muted-foreground text-center mt-4">
+                    <p className="text-xs text-muted-foreground text-center mt-3">
                       We'll review your information and contact you within 24 hours
                     </p>
                   </div>

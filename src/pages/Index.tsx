@@ -1,6 +1,8 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import TrustSection from "@/components/TrustSection";
+import FAQSection from "@/components/FAQSection";
+import ProcessSection from "@/components/ProcessSection";
 import { useEffect } from "react";
 
 const Index = () => {
@@ -13,6 +15,8 @@ const Index = () => {
       <Navigation />
       <Hero />
       <TrustSection />
+      <FAQSection />
+      <ProcessSection />
     </div>
   );
 };

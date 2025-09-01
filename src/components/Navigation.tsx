@@ -12,11 +12,14 @@ import { Link, useLocation } from "react-router-dom";
 const Navigation = () => {
   const location = useLocation();
   
-  const navItems = [
+  const serviceItems = [
     { name: "Rate Optimization", href: "/rate-optimization" },
-    { name: "Bill Management", href: "/bill-management", comingSoon: true },
-    { name: "Benchmarking", href: "/benchmarking", comingSoon: true },
-    { name: "Carbon Accounting", href: "/carbon-accounting", comingSoon: true },
+    { name: "Bill Management", href: "/bill-management" },
+    { name: "Benchmarking", href: "/benchmarking" },
+    { name: "Carbon Accounting", href: "/carbon-accounting" },
+  ];
+
+  const navItems = [
     { name: "Our Process", href: "/learn-more" },
   ];
 
@@ -34,15 +37,37 @@ const Navigation = () => {
           {/* Center: Navigation Links */}
           <div className="hidden md:flex items-center justify-center flex-1">
             <div className="flex items-center space-x-16">
+              {/* Our Services Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    className={`px-4 py-3 text-lg font-medium transition-colors ${
+                      location.pathname === '/rate-optimization' || 
+                      location.pathname === '/bill-management' || 
+                      location.pathname === '/benchmarking' || 
+                      location.pathname === '/carbon-accounting'
+                        ? "text-primary border-b-2 border-accent"
+                        : "text-muted-foreground hover:text-primary"
+                    }`}
+                  >
+                    Our Services
+                    <ChevronDown className="ml-2 h-5 w-5" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  {serviceItems.map((item) => (
+                    <DropdownMenuItem key={item.name} asChild className="text-lg">
+                      <Link to={item.href} className="w-full">
+                        {item.name}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+
               {navItems.map((item) => (
                 <div key={item.name} className="relative">
-                  {item.comingSoon && (
-                    <Badge 
-                      className="absolute -top-3 -right-3 text-xs px-1 py-0.5 transform scale-75 bg-accent text-accent-foreground"
-                    >
-                      Coming Soon
-                    </Badge>
-                  )}
                   <Link
                     to={item.href}
                     className={`px-4 py-3 text-lg font-medium transition-colors ${
@@ -72,12 +97,12 @@ const Navigation = () => {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56">
-                  <DropdownMenuItem asChild>
+                  <DropdownMenuItem asChild className="text-lg">
                     <Link to="/blog/utility-tariffs">
                       Utility Tariffs for Multi-Site Businesses
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
+                  <DropdownMenuItem asChild className="text-lg">
                     <Link to="/blog/supply-distribution">
                       Supply vs. Distribution Charges
                     </Link>

@@ -27,9 +27,20 @@ const generateConfirmationNumber = (): string => {
 
 export const submitForm = async (data: FormSubmissionData): Promise<SubmissionResult> => {
   try {
+    // Track form submission in Google Analytics
+    if (typeof window !== 'undefined' && (window as any).trackFormSubmission) {
+      (window as any).trackFormSubmission(data);
+    }
+
+    // Track file uploads if any files were uploaded
+    if (data.files.length > 0 && typeof window !== 'undefined' && (window as any).trackFileUpload) {
+      const totalSize = data.files.reduce((sum, file) => sum + file.size, 0);
+      (window as any).trackFileUpload(data.files.length, totalSize);
+    }
+
     // Generate confirmation number
     const confirmationNumber = generateConfirmationNumber()
-
+    
     // First, create the form submission record
     const { data: submission, error: submissionError } = await supabase
       .from('form_submissions')
@@ -37,7 +48,7 @@ export const submitForm = async (data: FormSubmissionData): Promise<SubmissionRe
         name: data.name,
         email: data.email,
         phone: data.phone,
-        confirmation_number: confirmationNumber
+        confirmation_number: confirmationNumber // Added
       })
       .select()
       .single()
@@ -56,7 +67,6 @@ export const submitForm = async (data: FormSubmissionData): Promise<SubmissionRe
     if (data.files.length > 0) {
       for (const file of data.files) {
         const uploadResult = await uploadPdfFile(file, submissionId)
-        
         if (uploadResult.success && uploadResult.filePath) {
           // Create PDF file record
           const { error: pdfError } = await supabase
@@ -67,7 +77,6 @@ export const submitForm = async (data: FormSubmissionData): Promise<SubmissionRe
               file_path: uploadResult.filePath,
               file_size: file.size
             })
-
           if (pdfError) {
             console.error('Error creating PDF file record:', pdfError)
           }
