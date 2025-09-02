@@ -90,13 +90,18 @@ export const submitForm = async (data: FormSubmissionData): Promise<SubmissionRe
 
     // Call the Edge Function to send email notification
     try {
+      const apiKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+      console.log('API Key available:', !!apiKey, 'Length:', apiKey?.length || 0);
+      console.log('Environment variables:', Object.keys(import.meta.env));
+      console.log('VITE_SUPABASE_ANON_KEY exists:', 'VITE_SUPABASE_ANON_KEY' in import.meta.env);
+      
       const response = await fetch(
         'https://xbmiuxttuuzhasdakdxc.supabase.co/functions/v1/send-form-notification',
         {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY || ''}`,
+            'Authorization': `Bearer ${apiKey}`,
           },
           body: JSON.stringify({
                          formSubmission: {

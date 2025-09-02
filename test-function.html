@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Edge Function</title>
+</head>
+<body>
+    <h1>Test Supabase Edge Function</h1>
+    <button onclick="testFunction()">Test send-form-notification</button>
+    <div id="result"></div>
+
+    <script>
+        async function testFunction() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Testing...';
+            
+            try {
+                // Get the API key from environment (you'll need to set this)
+                const apiKey = 'YOUR_SUPABASE_ANON_KEY'; // Replace with your actual key
+                
+                const response = await fetch('https://xbmiuxttuuzhasdakdxc.supabase.co/functions/v1/send-form-notification', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`,
+                    },
+                    body: JSON.stringify({
+                        formSubmission: {
+                            id: 'test-123',
+                            business_name: 'Test Business',
+                            name: 'Test User',
+                            email: 'test@example.com',
+                            phone: '123-456-7890',
+                            comments: 'Test comment',
+                            confirmation_number: 'TEST-001',
+                            created_at: new Date().toISOString(),
+                            pdf_files: []
+                        }
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `<h3>✅ Success!</h3><pre>${JSON.stringify(data, null, 2)}</pre>`;
+                } else {
+                    const errorText = await response.text();
+                    resultDiv.innerHTML = `<h3>❌ Error ${response.status}</h3><pre>${errorText}</pre>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<h3>❌ Fetch Error</h3><pre>${error.message}</pre>`;
+            }
+        }
+    </script>
+</body>
+</html>
