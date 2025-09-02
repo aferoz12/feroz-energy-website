@@ -12,7 +12,8 @@ const Hero = () => {
     businessName: "",
     name: "",
     email: "",
-    phone: ""
+    phone: "",
+    comments: ""
   });
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -31,6 +32,7 @@ const Hero = () => {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
+        comments: formData.comments,
         files: selectedFiles
       };
 
@@ -43,7 +45,7 @@ const Hero = () => {
         });
         
         // Reset form
-        setFormData({ businessName: "", name: "", email: "", phone: "" });
+        setFormData({ businessName: "", name: "", email: "", phone: "", comments: "" });
         setSelectedFiles([]);
         
         // Redirect to confirmation page with confirmation number
@@ -188,45 +190,66 @@ const Hero = () => {
                     />
                   </div>
                   
-                  <div>
-                    <Input
-                      type="tel"
-                      placeholder="Phone Number"
-                      value={formData.phone}
-                      onChange={(e) => handleInputChange("phone", e.target.value)}
-                      className="h-12 text-sm"
-                      required
-                    />
-                  </div>
+                                       <div>
+                       <Input
+                         type="tel"
+                         placeholder="Phone Number"
+                         value={formData.phone}
+                         onChange={(e) => handleInputChange("phone", e.target.value)}
+                         className="h-12 text-sm"
+                         required
+                       />
+                     </div>
+                     
+                     <div>
+                       <textarea
+                         placeholder="Additional comments or context (optional)"
+                         value={formData.comments}
+                         onChange={(e) => handleInputChange("comments", e.target.value)}
+                         className="w-full h-24 p-3 text-sm border border-input rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                         rows={4}
+                       />
+                     </div>
 
-                  <div 
-                    className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors cursor-pointer ${
-                      isDragOver 
-                        ? 'border-accent bg-accent/10' 
-                        : 'border-border hover:border-accent'
-                    }`}
-                    onDragOver={handleDragOver}
-                    onDragLeave={handleDragLeave}
-                    onDrop={handleDrop}
-                    onClick={() => fileInputRef.current?.click()}
-                  >
-                    <input
-                      ref={fileInputRef}
-                      type="file"
-                      accept=".pdf"
-                      multiple
-                      onChange={(e) => handleFileSelect(e.target.files)}
-                      className="hidden"
-                    />
-                    <div className="space-y-2">
-                      <p className="text-base text-muted-foreground">
-                        Drag & drop utility bills here
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        Or click to select files (1-12 months recommended)
-                      </p>
-                    </div>
-                  </div>
+                                       <div className="space-y-2">
+                       <div className="flex items-center justify-between">
+                         <label className="text-sm font-medium text-primary">
+                           Utility Bills (Optional)
+                         </label>
+                         <span className="text-xs text-muted-foreground">
+                           Not required for initial review
+                         </span>
+                       </div>
+                       
+                       <div 
+                         className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors cursor-pointer ${
+                           isDragOver 
+                             ? 'border-accent bg-accent/10' 
+                             : 'border-border hover:border-accent'
+                         }`}
+                         onDragOver={handleDragOver}
+                         onDragLeave={handleDragLeave}
+                         onDrop={handleDrop}
+                         onClick={() => fileInputRef.current?.click()}
+                       >
+                         <input
+                           ref={fileInputRef}
+                           type="file"
+                           accept=".pdf"
+                           multiple
+                           onChange={(e) => handleFileSelect(e.target.files)}
+                           className="hidden"
+                         />
+                         <div className="space-y-2">
+                           <p className="text-base text-muted-foreground">
+                             Drag & drop utility bills here
+                           </p>
+                           <p className="text-xs text-muted-foreground">
+                             Or click to select files (1-12 months recommended)
+                           </p>
+                         </div>
+                       </div>
+                     </div>
 
                   {selectedFiles.length > 0 && (
                     <div className="space-y-2">

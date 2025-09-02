@@ -6,6 +6,7 @@ export interface FormSubmissionData {
   name: string
   email: string
   phone: string
+  comments: string
   files: File[]
 }
 
@@ -50,6 +51,7 @@ export const submitForm = async (data: FormSubmissionData): Promise<SubmissionRe
         name: data.name,
         email: data.email,
         phone: data.phone,
+        comments: data.comments,
         confirmation_number: confirmationNumber // Added
       })
       .select()
@@ -85,6 +87,46 @@ export const submitForm = async (data: FormSubmissionData): Promise<SubmissionRe
         }
       }
     }
+
+    // Call the Edge Function to send email notification
+    try {
+      const response = await fetch(
+        'https://xbmiuxttuuzhasdakdxc.supabase.co/functions/v1/send-form-notification',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY || ''}`,
+          },
+          body: JSON.stringify({
+                         formSubmission: {
+               id: submissionId,
+               business_name: data.businessName,
+               name: data.name,
+               email: data.email,
+               phone: data.phone,
+               comments: data.comments,
+               confirmation_number: confirmationNumber,
+               created_at: new Date().toISOString(),
+               pdf_files: data.files.map(file => ({
+                 file_name: file.name,
+                 file_size: file.size
+               }))
+             }
+          })
+        }
+      );
+
+             if (!response.ok) {
+         const errorText = await response.text();
+         console.warn('Email notification failed, but form was submitted successfully. Status:', response.status, 'Response:', errorText);
+       } else {
+         console.log('Email notification sent successfully!');
+       }
+     } catch (error) {
+       console.warn('Email notification failed, but form was submitted successfully:', error);
+       console.log('Error details:', error.message, error.stack);
+     }
 
     return {
       success: true,

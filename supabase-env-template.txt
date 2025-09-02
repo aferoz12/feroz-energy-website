@@ -1,0 +1,18 @@
+# Zoho Mail Pro SMTP Credentials for Supabase Edge Function
+# Copy these to your Supabase Edge Function environment variables
+
+ZOHO_EMAIL=info@ferozenergy.com
+ZOHO_PASSWORD=your_zoho_password_here
+
+# Note: Replace 'your_zoho_password_here' with your actual Zoho Mail Pro password
+# If you have 2FA enabled, you may need to use an app-specific password
+
+# To set these in Supabase:
+# 1. Go to your Supabase dashboard
+# 2. Navigate to Settings > Edge Functions
+# 3. Add these as environment variables
+
+# Zoho Pro SMTP Settings:
+# Server: smtppro.zoho.com
+# Port: 465
+# Mode: SSL
