@@ -112,8 +112,14 @@ const Navigation = () => {
             </div>
           </div>
 
-          {/* Right: Get Started Button */}
-          <div className="flex-shrink-0">
+          {/* Right: Email and Get Started Button */}
+          <div className="flex items-center space-x-6">
+            <a 
+              href="mailto:info@ferozenergy.com"
+              className="text-lg font-medium text-muted-foreground hover:text-primary transition-colors px-4 py-3"
+            >
+              info@ferozenergy.com
+            </a>
             <Button 
               asChild 
               size="lg"

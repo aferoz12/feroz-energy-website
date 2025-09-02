@@ -2,6 +2,7 @@ import { supabase, FormSubmission, PdfFile } from './supabase'
 import { uploadPdfFile, UploadResult } from './fileUpload'
 
 export interface FormSubmissionData {
+  businessName: string
   name: string
   email: string
   phone: string
@@ -45,6 +46,7 @@ export const submitForm = async (data: FormSubmissionData): Promise<SubmissionRe
     const { data: submission, error: submissionError } = await supabase
       .from('form_submissions')
       .insert({
+        business_name: data.businessName,
         name: data.name,
         email: data.email,
         phone: data.phone,

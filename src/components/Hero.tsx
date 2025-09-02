@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 
 const Hero = () => {
   const [formData, setFormData] = useState({
+    businessName: "",
     name: "",
     email: "",
     phone: ""
@@ -26,6 +27,7 @@ const Hero = () => {
 
     try {
       const submissionData: FormSubmissionData = {
+        businessName: formData.businessName,
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
@@ -41,7 +43,7 @@ const Hero = () => {
         });
         
         // Reset form
-        setFormData({ name: "", email: "", phone: "" });
+        setFormData({ businessName: "", name: "", email: "", phone: "" });
         setSelectedFiles([]);
         
         // Redirect to confirmation page with confirmation number
@@ -150,21 +152,30 @@ const Hero = () => {
                   <h3 className="text-xl font-semibold text-primary mb-3">
                     Get Your Free Rate Review
                   </h3>
-                  <p className="text-sm text-muted-foreground">
-                    No savings, no fee. Let us find the overcharges in your utility bills.
-                  </p>
+                                       <p className="text-sm text-muted-foreground">
+                       No savings, no fee. Let us find the overcharges in your commercial utility bills.
+                     </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div>
-                    <Input
-                      placeholder="Full Name"
-                      value={formData.name}
-                      onChange={(e) => handleInputChange("name", e.target.value)}
-                      className="h-12 text-sm"
-                      required
-                    />
-                  </div>
+                                   <form onSubmit={handleSubmit} className="space-y-5">
+                     <div>
+                       <Input
+                         placeholder="Business Name"
+                         value={formData.businessName}
+                         onChange={(e) => handleInputChange("businessName", e.target.value)}
+                         className="h-12 text-sm"
+                         required
+                       />
+                     </div>
+                     <div>
+                       <Input
+                         placeholder="Full Name"
+                         value={formData.name}
+                         onChange={(e) => handleInputChange("name", e.target.value)}
+                         className="h-12 text-sm"
+                         required
+                       />
+                     </div>
                   
                   <div>
                     <Input
@@ -251,9 +262,12 @@ const Hero = () => {
                       {isSubmitting ? "Submitting..." : "Submit Free Review Request"}
                     </Button>
                     
-                    <p className="text-xs text-muted-foreground text-center mt-3">
-                      We'll review your information and contact you within 24 hours
-                    </p>
+                                           <p className="text-xs text-muted-foreground text-center mt-3">
+                         We'll review your information and contact you within 24 hours
+                       </p>
+                       <p className="text-xs text-muted-foreground text-center mt-2">
+                         Your business data is encrypted and never shared. We take security seriously.
+                       </p>
                   </div>
                 </form>
               </div>

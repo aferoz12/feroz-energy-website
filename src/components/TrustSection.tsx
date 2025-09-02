@@ -14,7 +14,7 @@ const TrustSection = () => {
               </h2>
               <p className="text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
                 Complex rate structures, hidden fees, and billing errors cost businesses thousands annually. 
-                We specialize in finding these costly mistakes.
+                We specialize in finding these costly mistakes for commercial clients.
               </p>
             </div>
 
@@ -22,7 +22,7 @@ const TrustSection = () => {
               <Card className="text-center shadow-lg">
                 <CardContent className="p-10">
                   <div className="w-20 h-20 bg-gradient-accent rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span className="text-3xl font-bold text-accent-foreground">85%</span>
+                    <span className="text-3xl font-bold text-accent-foreground">10%</span>
                   </div>
                   <h3 className="text-2xl font-semibold text-primary mb-4">
                     Bills Have Errors
