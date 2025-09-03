@@ -245,7 +245,7 @@ const Hero = () => {
                              Drag & drop utility bills here
                            </p>
                            <p className="text-xs text-muted-foreground">
-                             Or click to select files (1-12 months recommended)
+                             Or click to select files (upload a sample bill)
                            </p>
                          </div>
                        </div>

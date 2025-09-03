@@ -33,7 +33,7 @@ const LearnMore = () => {
                   <div className="text-6xl font-bold text-accent mb-4">1</div>
                   <h3 className="text-2xl font-semibold text-primary mb-4">Data Collection</h3>
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    We gather 12-24 months of utility bills for each location. PDFs are fine - we can also import interval data or Green Button formats if available.
+                    We gather utility bills for each location. PDFs are fine - we can also import interval data or Green Button formats if available.
                   </p>
                 </CardContent>
               </Card>
@@ -94,7 +94,7 @@ const LearnMore = () => {
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
                 <div className="w-2 h-2 bg-accent rounded-full mt-3 flex-shrink-0"></div>
-                <p className="text-muted-foreground">Recent utility bills (preferably 12–24 months) for each account – PDF copies are acceptable.</p>
+                <p className="text-muted-foreground">Recent utility bills for each account – PDF copies are acceptable.</p>
               </div>
               <div className="flex items-start space-x-3">
                 <div className="w-2 h-2 bg-accent rounded-full mt-3 flex-shrink-0"></div>

@@ -6,7 +6,7 @@ const ProcessSection = () => {
     {
       number: "1",
       title: "Data Collection",
-      description: "We gather 12-24 months of utility bills for each location. PDFs are fine - we can also import interval data or Green Button formats if available."
+      description: "We gather utility bills for each location. PDFs are fine - we can also import interval data or Green Button formats if available."
     },
     {
       number: "2",
@@ -64,7 +64,7 @@ const ProcessSection = () => {
           <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
             <div className="flex items-start space-x-3">
               <div className="w-2 h-2 bg-accent rounded-full mt-3 flex-shrink-0"></div>
-              <p className="text-muted-foreground">Recent utility bills (12–24 months) for each account</p>
+              <p className="text-muted-foreground">Recent utility bills for each account</p>
             </div>
             <div className="flex items-start space-x-3">
               <div className="w-2 h-2 bg-accent rounded-full mt-3 flex-shrink-0"></div>

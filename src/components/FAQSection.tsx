@@ -13,7 +13,7 @@ const FAQSection = () => {
     },
     {
       question: "What information do you need from me?",
-      answer: "We need 12-24 months of utility bills for each location (PDF copies are fine), details of any existing energy contracts, and a primary contact person to coordinate the process. That's it! We handle all the complex analysis, paperwork, and implementation to get you on the optimal rates."
+      answer: "We need utility bills for each location (PDF copies are fine), details of any existing energy contracts, and a primary contact person to coordinate the process. That's it! We handle all the complex analysis, paperwork, and implementation to get you on the optimal rates."
     },
     {
       question: "Do you handle all the paperwork and implementation?",

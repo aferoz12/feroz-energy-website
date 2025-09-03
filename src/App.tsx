@@ -15,6 +15,7 @@ import FAQ from "./pages/FAQ";
 import BlogUtilityTariffs from "./pages/BlogUtilityTariffs";
 import BlogSupplyDistribution from "./pages/BlogSupplyDistribution";
 import FormConfirmation from "./pages/FormConfirmation";
+import AboutUs from "./pages/AboutUs";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const AppWithAnalytics = () => {
       <Route path="/bill-management" element={<BillManagement />} />
       <Route path="/benchmarking" element={<Benchmarking />} />
       <Route path="/carbon-accounting" element={<CarbonAccounting />} />
+      <Route path="/about-us" element={<AboutUs />} />
       <Route path="/learn-more" element={<LearnMore />} />
       <Route path="/faq" element={<FAQ />} />
       <Route path="/blog/utility-tariffs" element={<BlogUtilityTariffs />} />

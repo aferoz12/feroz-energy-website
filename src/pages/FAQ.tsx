@@ -72,7 +72,7 @@ const FAQ = () => {
                       What information do you need from me?
                     </h3>
                     <p className="text-muted-foreground mb-4">
-                      We need <strong>12-24 months of utility bills</strong> for each location (PDF copies are fine), details of any existing energy contracts, and a primary contact person to coordinate the process.
+                      We need <strong>utility bills</strong> for each location (PDF copies are fine), details of any existing energy contracts, and a primary contact person to coordinate the process.
                     </p>
                     <p className="text-muted-foreground">
                       That's it! We handle all the complex analysis, paperwork, and implementation to get you on the optimal rates.
